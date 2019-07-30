@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+  <h2>Enter a new rating</h2>
+  <form role="form" method="post">
+    {% csrf_token %}
+    <p>Beer Name: {{ form.beer_name }}</p>
+    <p>Score: {{ form.score }}</p>
+    <p>Notes: {{ form.notes }}</p>
+    <p><button type="submit">Submit</button></p>
+  </form>
+</div>
+{% endblock %}
