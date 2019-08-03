@@ -16,10 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from ratings.views import home, RatingCreate
+from ratings.views import home, RatingCreate, RatingEdit
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home, name='rating-home'),
     url(r'rating/add/$', RatingCreate.as_view(), name='rating-add'),
+    url(r'rating/edit/(?P<rating_id>\d+)/$', RatingEdit.as_view(), name='rating-edit'),
 ]
