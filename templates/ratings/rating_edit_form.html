@@ -8,7 +8,10 @@
     <p>Beer Name: {{ form.beer_name }}</p>
     <p>Score: {{ form.score }}</p>
     <p>Notes: {{ form.notes }}</p>
-    <p><button type="submit">Submit</button></p>
+    <p>
+      <button type="submit">Submit</button>
+      <button type="submit" name="cancel">Cancel</button>
+    </p>
   </form>
 </div>
 {% endblock %}

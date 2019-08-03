@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
+
 {% block content %}
 <div class="row">
   <h2>Ratings</h2>
@@ -17,10 +19,19 @@
         <td>{{ rating.beer_name }}</td>
         <td>{{ rating.score }}</td>
         <td>{{ rating.notes }}</td>
+        <td><a href="{% url 'rating-edit' rating.id  %}">edit</a></td>
+        <td>
+          <form method="post" action="{% url 'rating-home' %}">
+            {% csrf_token %}
+            <button type="submit" value="{{ rating.id }}" name="delete">Delete</button>
+          </form>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
   <div><a href="{% url 'rating-add' %}">New</a></div>
 </div>
+
+{% comment %} <script src="{% static 'js/home.js' %}"></script> {% endcomment %}
 {% endblock %}
