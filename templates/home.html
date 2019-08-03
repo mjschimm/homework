@@ -9,6 +9,7 @@
     <thead>
       <tr>
         <th>Beer Name</th>
+        <th>Brewery</th>
         <th>Beer Rating</th>
         <th>Notes</th>
       </tr>
@@ -17,6 +18,7 @@
       {% for rating in ratings %}
       <tr>
         <td>{{ rating.beer_name }}</td>
+        <td>{{ rating.brewery }}</td>
         <td>{{ rating.score }}</td>
         <td>{{ rating.notes }}</td>
         <td><a href="{% url 'rating-edit' rating.id  %}">edit</a></td>
@@ -31,6 +33,10 @@
     </tbody>
   </table>
   <div><a href="{% url 'rating-add' %}">New</a></div>
+</div>
+
+<div class="modal">
+  {% include 'ratings/rating_form.html' %}
 </div>
 
 {% comment %} <script src="{% static 'js/home.js' %}"></script> {% endcomment %}
