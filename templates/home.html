@@ -3,6 +3,8 @@
 {% load staticfiles %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
 <div class="row">
   <h2>Ratings</h2>
   <table>
@@ -32,12 +34,14 @@
       {% endfor %}
     </tbody>
   </table>
-  <div><a href="{% url 'rating-add' %}">New</a></div>
+  <div><button id="New">New</button></div>
 </div>
 
 <div class="modal">
-  {% include 'ratings/rating_form.html' %}
+  <div class="modal-content">
+    {% include 'ratings/rating_form.html' %}
+  </div>
 </div>
 
-{% comment %} <script src="{% static 'js/home.js' %}"></script> {% endcomment %}
+<script src="{% static 'js/home.js' %}"></script>
 {% endblock %}

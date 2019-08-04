@@ -1,0 +1,13 @@
+.form-table tr td:nth-child(1) {
+    padding-right: 1em;
+    text-align: right;
+}
+
+table tr {
+    height: 2em;
+}
+
+textarea {
+    resize: none;
+    white-space: nowrap;
+}

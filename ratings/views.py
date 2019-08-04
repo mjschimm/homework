@@ -15,9 +15,9 @@ def home(request):
 
     """
         If post request comes from a delete button:
-            delete.
+            delete selection
         Else:
-            use post reqeust to add data
+            use post reqeust to add selection
     """
     if request.POST:
         if 'delete' in request.POST:
@@ -44,9 +44,6 @@ class RatingCreate(View):
     """ Create a new Rating """
     form_class = RatingForm
     template_name = 'ratings/rating_form.html'
-
-    # def fuckaroo():
-    #     print("fuckaroo")
 
     # def get(self, request):
     #     form = self.form_class()
