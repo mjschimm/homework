@@ -10,15 +10,12 @@ def home(request):
     :param request: Django request object
     :return: rendered homepage
     """
-    
-    form_object = RatingCreate
+    form_object = RatingCreate  # RatingCreate view as object
 
-    """
-        If post request comes from a delete button:
-            delete selection
-        Else:
-            use post reqeust to add selection
-    """
+    # If post request comes from 'Delete' button:
+    #   delete selection
+    # Else:
+    #   use post reqeust to add selection from 'New' button
     if request.POST:
         if 'delete' in request.POST:
             rating_id = request.POST['delete']
@@ -26,6 +23,7 @@ def home(request):
             rating.delete()
             return redirect(home)
         else:
+            print(request.POST)
             form = form_object.form_class(request.POST)
             if form.is_valid():
                 _ = form.save()
@@ -45,36 +43,36 @@ class RatingCreate(View):
     form_class = RatingForm
     template_name = 'ratings/rating_form.html'
 
-    # def get(self, request):
-    #     form = self.form_class()
-    #     return render(request, self.template_name, {'form': form})
-
-    # def post(self, request):
-    #     form = self.form_class(request.POST)
-    #     if form.is_valid():
-    #         _ = form.save()
-    #         return redirect(home)
-    #     return render(request, self.template_name, {'form: form'})
-
-
 class RatingEdit(View):
     """ Edit a Rating """
     form_class = RatingForm
     template_name = 'ratings/rating_edit_form.html'
 
+    # Get request to pre-populate form fields with current data values
     def get(self, request, rating_id):
+        """ get request to pre-populate form items
+        :param rating_id: ID of the beer rating to display
+        :return: rendered homepage
+        """
         rating = Rating.objects.get(pk=rating_id)
         form = self.form_class(initial={'beer_name': rating.beer_name, 'score': rating.score, 'notes': rating.notes, 'brewery': rating.brewery})
         return render(request, self.template_name, {'form': form})
 
     def post(self, request, rating_id):
+        """ post request to update beer rating entry
+        :param rating_id: ID of the beer rating to update
+        :return: rendered homepage
+        """
         rating = Rating.objects.get(pk=rating_id)
         form = self.form_class(request.POST, instance=rating)
+
+        # If cancel edit:
+        #   return to home
+        # Else:
+        #   edit entry
         if "cancel" in request.POST:
             return redirect(home)
         else:
             if form.is_valid():
                 _ = form.save()
                 return redirect(home)
-        return render(request, self.template_name, {'form: form'})
-

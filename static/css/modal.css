@@ -1,3 +1,5 @@
+/* Modal Style */
+
 .modal {
     height: 100%;
     left: 0;
@@ -10,9 +12,22 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.modal-center {
+    background-color: rgb(255, 255, 255);
+    margin: 50px auto 0 auto;
+    width: 400px;
+    padding: .2em 2em;
+}
+
+/* Modal Animation */
+
 .modal-show {
     animation: ModalShow .4s ease-out forwards;
     visibility: visible;
+}
+
+.modal-center-drop {
+    animation: ModalCenterDrop .4s ease-out forwards;
 }
 
 @keyframes ModalShow {
@@ -21,28 +36,19 @@
     }
 }
 
-.modal-content {
-    background-color: rgb(255, 255, 255);
-    margin: 50px auto 0 auto;
-    width: 400px;
-    padding: .2em 2em;
-}
-
-.modal-content-drop {
-    animation: ModalContentDrop .4s ease-out forwards;
-}
-
-@keyframes ModalContentDrop {
+@keyframes ModalCenterDrop {
     to {
         margin-top: 100px;
     }
 }
 
-.modal-center {
+/* Modal Content Stylization */
+
+.modal-content {
     margin: auto;
 }
 
-.modal button {
+.modal-button {
     border-radius: 2px;
     background-size: 204%;
     background-position-x: 100%;
@@ -60,6 +66,6 @@
     background-image: linear-gradient(to right, rgb(56, 142, 212) 50%, #e1e1e1 50%);
 }
 
-.modal button:hover {
+.modal-button:hover {
     cursor: pointer;
 }

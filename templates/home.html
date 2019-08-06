@@ -25,6 +25,9 @@
         <td>{{ rating.notes }}</td>
         <td><a href="{% url 'rating-edit' rating.id  %}">edit</a></td>
         <td>
+
+          <!-- Use form-submit action to make post request
+            to add new beer rating to database -->
           <form method="post" action="{% url 'rating-home' %}">
             {% csrf_token %}
             <button type="submit" value="{{ rating.id }}" name="delete">Delete</button>
@@ -38,11 +41,10 @@
 </div>
 
 <div class="modal">
-  <div class="modal-content">
+  <div class="modal-center">
     {% include 'ratings/rating_form.html' %}
   </div>
 </div>
 
 <script src="{% static 'js/home.js' %}"></script>
-<script src="http://code.jquery.com/color/jquery.color-2.1.2.js"></script>
 {% endblock %}
