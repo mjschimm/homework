@@ -5,33 +5,36 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/rating_form.css' %}">
 
-<div class="modal-content">
-  <h2>Enter a new rating</h2>
-  <form role="form" method="post">
-    {% csrf_token %}
-    <table class="form-table">
-      <tr>
-        <td>Beer Name:</td>
-        <td>{{ form.beer_name }}</td>
-      </tr>
-      <tr>
-        <td>Brewery:</td>
-        <td>{{ form.brewery }}</td>
-      </tr>
-      <tr>
-        <td>Notes:</td>
-        <td>{{ form.notes }}</td>
-      </tr>
-      <tr>
-        <td>Score:</td>
-        <td>{{ form.score }}</td>
-      </tr>
-    </table>
-    <p>
-      <button class="modal-button submit" type="submit">Submit</button>
-      <button class="modal-button cancel" type="button" id="cancel">Cancel</button>
-    </p>
-  </form>
-</div>
+<h2>{{ title }}</h2>
+<form role="form" method="post">
+  {% csrf_token %}
+  <table class="form-table">
+    <tr>
+      <td>Beer Name:</td>
+      <td>{{ form.beer_name }}</td>
+    </tr>
+    <tr>
+      <td>Brewery:</td>
+      <td>{{ form.brewery }}</td>
+    </tr>
+    <tr>
+      <td>Notes:</td>
+      <td>{{ form.notes }}</td>
+    </tr>
+    <tr>
+      <td>Score:</td>
+      <td>{{ form.score }}</td>
+    </tr>
+  </table>
+  <p>
+    <button class="form-button submit" type="submit">Submit</button>
+    {% if title == "Edit rating" %}
+    <button class="form-button cancel" type="submit" name="cancel">Cancel</button>
+    {% else %}
+    <button class="form-button cancel" type="button" id="cancel">Cancel</button>
+    {% endif %}
+  </p>
+</form>
 
+<script src="{% static 'js/rating-form.js' %}"></script>
 {% endblock %}

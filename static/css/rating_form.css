@@ -1,12 +1,10 @@
 h2 {
-    /* text-decoration: underline */
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .form-table {
-    /* border: 1px solid black; */
     margin: 2rem 0;
-    width: 100%;
+    width: 340px;
 }
 
 .form-table tr td:nth-child(1) {
@@ -21,4 +19,26 @@ table tr {
 textarea {
     resize: none;
     white-space: nowrap;
+}
+
+.form-button {
+    border-radius: 2px;
+    background-size: 204%;
+    background-position-x: 100%;
+    color: #666;
+    font-family: 'Roboto', sans-serif;
+    font-size: .9em;
+    padding: .4em .8em;
+}
+
+.form-button:hover {
+    cursor: pointer;
+}
+
+.cancel {
+    background-image: linear-gradient(to right, rgb(212, 79, 56) 50%, #e1e1e1 50%);
+}
+
+.submit {
+    background-image: linear-gradient(to right, rgb(56, 142, 212) 50%, #e1e1e1 50%);
 }

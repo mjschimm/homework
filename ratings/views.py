@@ -34,6 +34,7 @@ def home(request):
     context = {
         'ratings': Rating.objects.all(),
         'form': form,
+        'title': form_object.title
     }
     return render(request, 'home.html', context)
 
@@ -41,12 +42,14 @@ def home(request):
 class RatingCreate(View):
     """ Create a new Rating """
     form_class = RatingForm
+    title = "Enter a new rating"
     template_name = 'ratings/rating_form.html'
 
 class RatingEdit(View):
     """ Edit a Rating """
     form_class = RatingForm
-    template_name = 'ratings/rating_edit_form.html'
+    title = 'Edit rating'
+    template_name = 'ratings/rating_form.html'
 
     # Get request to pre-populate form fields with current data values
     def get(self, request, rating_id):
@@ -56,7 +59,11 @@ class RatingEdit(View):
         """
         rating = Rating.objects.get(pk=rating_id)
         form = self.form_class(initial={'beer_name': rating.beer_name, 'score': rating.score, 'notes': rating.notes, 'brewery': rating.brewery})
-        return render(request, self.template_name, {'form': form})
+        context = {
+            'form': form,
+            'title': self.title
+        }
+        return render(request, self.template_name, context)
 
     def post(self, request, rating_id):
         """ post request to update beer rating entry
