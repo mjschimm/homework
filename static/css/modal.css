@@ -22,11 +22,10 @@
 }
 
 .modal-content {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     margin: 50px auto 0 auto;
     width: 350px;
     padding: .2em 2em;
-    /* text-align: center; */
 }
 
 .modal-content-drop {
@@ -41,4 +40,26 @@
 
 .modal-center {
     margin: auto;
+}
+
+.modal button {
+    border-radius: 2px;
+    background-size: 204%;
+    background-position-x: 100%;
+    color: #666;
+    font-family: 'Roboto', sans-serif;
+    font-size: .9em;
+    padding: .4em .8em;
+}
+
+.modal .cancel {
+    background-image: linear-gradient(to right, rgb(212, 79, 56) 50%, #e1e1e1 50%);
+}
+
+.modal .submit {
+    background-image: linear-gradient(to right, rgb(56, 142, 212) 50%, #e1e1e1 50%);
+}
+
+.modal button:hover {
+    cursor: pointer;
 }
