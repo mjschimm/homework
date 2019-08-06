@@ -29,9 +29,15 @@
   <p>
     <button class="form-button submit" type="submit">Submit</button>
     {% if title == "Edit rating" %}
-    <button class="form-button cancel" type="submit" name="cancel">Cancel</button>
+
+    <!-- We are in the 'edit' view and use an anchor on 'Cancel' to go exit -->
+    <a href="/"><button class="form-button cancel" type="button" name="cancel">Cancel</button></a>
+
     {% else %}
+
+    <!-- We are in the 'home' view and use JQuery to hide the form modal -->
     <button class="form-button cancel" type="button" id="cancel">Cancel</button>
+
     {% endif %}
   </p>
 </form>

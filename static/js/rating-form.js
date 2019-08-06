@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+    // Button animations for the form
     $('.form-button').hover(
         function() {
             $(this).animate({

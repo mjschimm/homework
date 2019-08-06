@@ -15,7 +15,7 @@ def home(request):
     # If post request comes from 'Delete' button:
     #   delete selection
     # Else:
-    #   use post reqeust to add selection from 'New' button
+    #   use post reqeust to add selection from modal 'Submit' button
     if request.POST:
         if 'delete' in request.POST:
             rating_id = request.POST['delete']
@@ -23,7 +23,6 @@ def home(request):
             rating.delete()
             return redirect(home)
         else:
-            print(request.POST)
             form = form_object.form_class(request.POST)
             if form.is_valid():
                 _ = form.save()
@@ -73,13 +72,6 @@ class RatingEdit(View):
         rating = Rating.objects.get(pk=rating_id)
         form = self.form_class(request.POST, instance=rating)
 
-        # If cancel edit:
-        #   return to home
-        # Else:
-        #   edit entry
-        if "cancel" in request.POST:
+        if form.is_valid():
+            _ = form.save()
             return redirect(home)
-        else:
-            if form.is_valid():
-                _ = form.save()
-                return redirect(home)
